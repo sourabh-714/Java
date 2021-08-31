@@ -1,0 +1,70 @@
+class Solution {
+    
+    List<List<String>> ans=new ArrayList<List<String>>();
+    
+    boolean checkConstraint(int arr[][], int row, int col){
+        //col
+        for(int i=0;i<=row;i++){
+            if(arr[i][col]==1){
+                return false;
+            }
+        }
+        
+        //dia -left
+        
+        for(int i=row,j=col;i>=0 && j>=0 ;i--,j--){
+            if(arr[i][j]==1){
+                return false;
+            }
+        }
+        
+        //right dia
+        for(int i=row, j=col ; i>=0 && j<arr.length ; i-- ,j++){
+            if(arr[i][j]==1){
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    public void fillnQueen(int arr[][], int q){
+        
+        if(q==arr.length){
+            convert(arr);
+            return;
+        }
+        
+        //options
+        for(int i=0;i<arr.length;i++ ){
+            if(checkConstraint(arr,q,i)==true){
+                arr[q][i]=1;
+                
+                fillnQueen(arr, q+1);
+                
+                arr[q][i]=0;
+            }
+        }
+    }
+    void convert(int arr[][]){
+        String str="";
+        List<String> a=new ArrayList<String>();
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length;j++){
+                if(arr[i][j]==0)
+                str=str+".";
+                else{
+                    str=str+"Q";
+                }
+            }
+            a.add(str);
+            str="";
+        }
+        ans.add(a);
+    }
+    public List<List<String>> solveNQueens(int n) {
+    int arr[][]=new int[n][n];
+    fillnQueen(arr,0);    
+        return ans;
+    }
+}
+
