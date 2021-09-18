@@ -1,0 +1,19 @@
+package recursion;
+class permutationWithoutRep{
+
+    static void getPer(String option, String ans, int n){
+
+        if(ans.length()==n){
+            System.out.println(ans);
+            return;
+        }
+
+        for(int i=0;i<option.length();i++){
+            String newstr=option.substring(0,i)+option.substring(i+1);
+            getPer(newstr, ans+option.charAt(i),n);
+        }
+    }
+public static void main(String[] args) {
+    getPer("abcdef", "",4);
+}
+}

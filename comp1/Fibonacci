@@ -1,0 +1,23 @@
+public class Fibonacci {
+    
+    static int getfibo(int n){
+        if(n==0 || n==1){
+            return n;
+        }
+
+        return getfibo(n-1)+getfibo(n-2);
+
+        // int term1=getfibo(n-1);
+        // int term2=getfibo(n-2);
+        // return term1+term2;
+
+    }
+   public static void main(String[] args) {
+       
+    int n=5;
+    System.out.println("n=5 =>"+getfibo(n));
+    System.out.println("n=0 =>"+getfibo(0));
+    System.out.println("n=1 =>"+getfibo(1));
+    System.out.println("n=8 =>"+getfibo(8));
+   } 
+}

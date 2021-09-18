@@ -1,0 +1,31 @@
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        List<List<Integer>> anslist=new ArrayList<>();
+        
+        List<Integer> list=new ArrayList<>();
+        
+        Arrays.sort(nums);
+        subset(nums,list, anslist, 0);
+        
+        return anslist;
+    }
+    
+    void subset(int[] nums, List<Integer> list,List<List<Integer>> anslist, int in){
+
+        
+        anslist.add(new ArrayList<Integer>(list));
+        
+        for(int i=in ;i<nums.length;i++){
+            if(i!=in && nums[i]==nums[i-1]){
+            continue;
+            }
+            
+            list.add(nums[i]);
+            subset(nums, list, anslist, i+1);
+            list.remove(list.size()-1);
+            
+            
+        }
+        
+    }
+}

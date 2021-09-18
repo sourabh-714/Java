@@ -1,0 +1,29 @@
+class Solution {
+    
+    Map<Character, String> map=Map.of(
+    '2',"abc",'3',"def",'4',"ghi",'5',"jkl",'6',"mno",'7',"pqrs",'8',"tuv",'9',"wxyz");
+    List<String> combinations=new ArrayList<String>();
+    
+    
+    void getCombination( String digits, int in, String ans){
+            
+        if(in == digits.length()){
+            combinations.add(ans);
+            return;
+        }
+        
+        String str=map.get(digits.charAt(in));
+        
+        for(int i=0;i<str.length();i++){
+            getCombination(digits, in+1, ans+str.charAt(i));
+        }
+    }
+    public List<String> letterCombinations(String digits) {
+        
+        if(digits.length()==0)return combinations;
+        
+        getCombination(digits, 0, "");
+        return combinations;
+        
+    }
+}

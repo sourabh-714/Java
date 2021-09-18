@@ -1,0 +1,26 @@
+package recursion;
+
+public class DiceGame {
+
+    static int count=0;
+    static void rollDice(int target){
+
+        if(target==0){
+            count++;
+            return;
+        }
+        if(target<0){
+            return ;
+        }
+        for(int i=1;i<=6;i++){
+            rollDice(target-i);
+        }
+    }
+    public static void main(String[] args) {
+        int target=2;
+
+        rollDice(target);
+
+        System.out.println(count);
+    }
+}

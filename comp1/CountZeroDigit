@@ -1,0 +1,20 @@
+package recursion;
+
+public class CountZeroDigit {
+
+    static int countZeroes(int number){
+
+       if(number==0)return 0;
+        int count=countZeroes(number/10);
+        if(number%10==0){
+            count=count+1;
+        }
+        return count;
+    }
+    public static void main(String[] args) {
+        
+        int number=908900;
+
+        System.out.println(countZeroes(number));
+    }
+}

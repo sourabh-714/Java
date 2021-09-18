@@ -1,0 +1,53 @@
+package recursion;
+import java.util.ArrayList;
+import java.util.List;
+
+class PowerSet{
+
+
+    static void getPowerSet(String s, int in,String ans, List<String> list){
+
+        list.add(ans);
+
+        for(int i=in+1;i<s.length();i++){
+            getPowerSet(s, i, ans+s.charAt(i), list);
+        }
+
+    }
+    static void getPowerSet2(String option, int in, String ans, List<String> list){
+        
+        if(option.length()==in){
+            list.add(ans);
+            return;
+        }
+
+        getPowerSet2(option, in+1, ans+option.charAt(in), list);
+        getPowerSet2(option, in+1, ans, list);
+    }
+    public static void main(String[] args) {
+        String s="abc";
+
+        List<String> list=new ArrayList<String>();
+      //  getPowerSet(s, -1,"", list);
+        getPowerSet2(s, 0, "", list);
+        for(String ans:list){
+            System.out.print(ans+" ");
+        }
+
+    
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

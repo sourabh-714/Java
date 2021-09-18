@@ -1,0 +1,39 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        return binarySearch(nums, 0, nums.length-1, target);
+    }
+    
+    int binarySearch(int nums[], int lo, int hi, int target){
+        
+        if(lo>hi){
+            return -1;
+        }
+        int mid=(lo+hi)/2;
+        
+        if(nums[mid]==target){
+            return mid;
+        }
+        else{
+             if(nums[mid]>nums[hi]){
+                //rotated part right side
+                 if(target >=nums[lo] && target<=nums[mid]){
+                     return binarySearch(nums, lo, mid-1, target);
+                 }
+                 else{
+                     return binarySearch(nums, mid+1, hi, target);
+                 }
+             }   
+            else{
+                //rotated part left side
+                
+                if(target>=nums[mid] && target <=nums[hi]){
+                    return binarySearch(nums, mid+1, hi, target);
+                }
+                else{
+                   return binarySearch(nums, lo, mid-1, target); 
+                }
+            }
+        }
+    }
+}

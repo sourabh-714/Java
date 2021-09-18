@@ -1,0 +1,21 @@
+package recursion;
+
+public class permutationWithRep {
+
+    static void getPermutation(String option, String ans, int n){
+
+        if(ans.length()==n)
+        {
+            System.out.println(ans);
+            return ;
+        }
+        for(int i=0;i<option.length();i++){
+            getPermutation(option, ans+option.charAt(i), n);
+        }
+    }
+    public static void main(String[] args) {
+        String option="abcdef";
+
+        getPermutation(option,"",4);
+    } 
+}
